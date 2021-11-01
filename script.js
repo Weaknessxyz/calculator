@@ -114,7 +114,7 @@ function multiply(num1, num2) {
 function divide(num1, num2) {
     if (num2 === 0) {
         return 'ERROR'
-    } else return num1 / num2;
+    } else return Math.round(num1 / num2 * 10000) / 10000;
 }
 
 function operate(operator, num1, num2) {

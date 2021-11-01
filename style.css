@@ -18,6 +18,8 @@ colours!!
     display: grid;
     grid-template-rows: max-content;
     grid-template-columns: repeat(4, auto);
+    min-height: 0;
+    min-width: 0;
     gap: 2px;
     width: 430px;
     height: 530px;
@@ -58,6 +60,8 @@ colours!!
     border: 6px solid #420217;
     background-color: #D6F599;
     font-size: 60px;
+    overflow: hidden;
+    min-width: 0;   
 }
 
 .display-bar span {
