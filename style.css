@@ -1,5 +1,5 @@
 /*
-colours!!
+colours ✨✨
 #436436 Hunter Green
 #D6F599 Mindaro
 #D2FF28 Arctic Lime
@@ -12,6 +12,7 @@ colours!!
     box-sizing: border-box;
     margin: 0px;
     padding: 0px;
+    background-color: #150C0D;
 }
 
 .calc-container {
@@ -67,6 +68,7 @@ colours!!
 .display-bar span {
     margin-left: auto;
     color: #420217;
+    background-color: #D6F599;
 }
 
 
