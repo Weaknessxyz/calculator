@@ -49,7 +49,7 @@ colours ✨✨
 }
 
 .calc-container button:active {
-    filter: brightness(150%);
+    filter: brightness(180%);
 }
 
 .display-bar {
@@ -71,7 +71,9 @@ colours ✨✨
     background-color: #D6F599;
 }
 
-
+#equals {
+    background-color: rgb(40, 161, 149);
+}
 
 #zero {
     grid-column-start: span 2;

@@ -5,13 +5,44 @@ let currOperator = null;
 
 start();
 
+function add(num1, num2) {
+    return num1 + num2;
+}
+
+function subtract(num1, num2) {
+    return num1 - num2;
+}
+
+function multiply(num1, num2) {
+    return num1 * num2;
+}
+
+function divide(num1, num2) {
+    if (num2 === 0) {
+        return 'ERROR'
+    } else return Math.round(num1 / num2 * 100000) / 100000;
+}
+
+function operate(operator, num1, num2) {
+    switch (operator) {
+        case '+':
+            return add(num1, num2);
+            break;
+        case '-':
+            return subtract(num1, num2);
+            break;
+        case '*':
+            return multiply(num1, num2);
+            break;;
+        case '/':
+            return divide(num1, num2);
+    }
+}
+
 function setDisplayValue() {
     if (displayValue === 'ERROR' || isNaN(displayValue)) {
         document.querySelector('.display-bar span').textContent = 'ERROR';
-        operand1 = null;
-        operand2 = null;
-        currOperator = null;
-        displayValue = 0;
+        clearAll();
         
     } else {
         document.querySelector('.display-bar span').textContent = Number(displayValue);
@@ -37,29 +68,30 @@ function setOperator() {
                 operand1 = Number(displayValue);
                 displayValue = 0;
                 setDisplayValue();
+                currOperator = e.target.textContent;
             } else {
                 operand2 = Number(displayValue);
                 operand1 = operate(currOperator, operand1, operand2);
                 displayValue = operand1
                 setDisplayValue();
                 displayValue = 0;
+                currOperator = e.target.textContent;
             }
-
-            currOperator = e.target.textContent;
-
-            console.log(operand1);
-            console.log(operand2);
             });
     });
 }
 
 function clearAll() {
+    displayValue = 0;
+    operand1 = null;
+    operand2 = null;
+    currOperator = null;
+}
+
+function clearAllBtn() {
     const clearBtn = document.querySelector('#clear');
     clearBtn.addEventListener('click', () => {
-        displayValue = '0';
-        operand1 = null;
-        operand2 = null;
-        currOperator = null;
+        clearAll();
         setDisplayValue();
     });
 }
@@ -83,10 +115,9 @@ function getResult() {
             operand2 = Number(displayValue);
             displayValue = operate(currOperator, operand1, operand2);
             setDisplayValue();
+            operand1 = null;
+            operand2 = null;
         }
-        
-        operand1 = null;
-        operand2 = null;
     });
 }
 
@@ -95,40 +126,6 @@ function start() {
     setOperator();
     placeDigit();
     getResult();
-    clearAll();
+    clearAllBtn();
     delDigit();
-}
-
-function add(num1, num2) {
-    return num1 + num2;
-}
-
-function subtract(num1, num2) {
-    return num1 - num2;
-}
-
-function multiply(num1, num2) {
-    return num1 * num2;
-}
-
-function divide(num1, num2) {
-    if (num2 === 0) {
-        return 'ERROR'
-    } else return Math.round(num1 / num2 * 10000) / 10000;
-}
-
-function operate(operator, num1, num2) {
-    switch (operator) {
-        case '+':
-            return add(num1, num2);
-            break;
-        case '-':
-            return subtract(num1, num2);
-            break;
-        case '*':
-            return multiply(num1, num2);
-            break;;
-        case '/':
-            return divide(num1, num2);
-    }
 }
